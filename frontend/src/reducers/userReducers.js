@@ -56,7 +56,7 @@ export const userRegisterReducer = (state={}, action) => {
 export const userDetailsReducer = (state={ user: {}}, action) => {
     switch(action.type) {
         case USER_DETAILS_REQUEST:
-            return state={loading:true}
+            return state={loading:false}
         
         case USER_DETAILS_SUCCESS:
             return state={loading:false, user: action.payload}
