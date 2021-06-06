@@ -13,6 +13,7 @@ const PlaceOrderScreen = () => {
     cart.shippingPrice = (cart.itemsPrice > 100 ? 0 : 10).toFixed(2)
     cart.taxPrice = Number((0.082) * cart.itemsPrice).toFixed(2)
     cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2)
+    
     const placeOrder = (e) => {
         e.preventDefault()
         console.log('Order Have Been Placed')

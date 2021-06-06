@@ -4,7 +4,7 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.conf import settings
 
-from .models import Product
+from .models import Product, Order, OrderItem, ShippingAddress
 
 User = get_user_model()
 
@@ -60,3 +60,18 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
             data[k] = v
 
         return data
+
+class ShippingAddressSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ShippingAddress
+        fields = '__all__'
+
+class OrderItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OrderItem
+        fields = '__all__'
+
+class OrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = '__all__'
