@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from core.models import Product, Order, OrderItem, ShippingAddress
-from core.serializers import ProductSerializer
+from core.serializers import ProductSerializer, OrderSerializer
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
@@ -48,5 +48,6 @@ def addOrderItems(request):
             # update stock
             product.countInStock -= item.qty
             product.save()
-
-    return Response("ORDER")
+            
+        serializer = OrderSerializer(order, many=False)
+        return Response(serializer.data)
