@@ -70,7 +70,7 @@ const ProductScreen = ({match, history}) => {
                                         <Row>
                                             <Col>Status: </Col>
                                             <Col> 
-                                                {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
+                                                {product.countInStock === 0 || product.countInStock === ''? 'Out of Stock' : 'In Stock'}
                                             </Col>
                                         </Row>
                                     </ListGroup.Item>
@@ -108,7 +108,7 @@ const ProductScreen = ({match, history}) => {
                                             <Button
                                                 onClick={() => addToCartHandler()} 
                                                 block 
-                                                disabled={product.countInStock === 0} 
+                                                disabled={product.countInStock === 0 || product.countInStock === ''} 
                                                 type='button'>Add To Cart
                                             </Button>
                                         </Row>

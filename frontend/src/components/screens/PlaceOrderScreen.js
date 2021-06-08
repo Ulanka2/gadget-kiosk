@@ -1,16 +1,17 @@
-import React, {useState, useEffect} from 'react'
+import React, {useEffect} from 'react'
 import {Button, Row, Col, ListGroup, Image, Card} from 'react-bootstrap'
 import {useDispatch, useSelector} from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import Message from '../Message'
+import Loader from '../Loader'
 import CheckOutsteps from '../CheckOutSteps'
 import { createOrder } from '../../actions/orderActions'
 import { ORDER_CREATE_RESET } from '../../constants/orderConstant'
 
 const PlaceOrderScreen = ({history}) => {
     const orderCreate = useSelector(state => state.orderCreate)
-    const {order, error, success} = orderCreate
+    const {loading, order, error, success} = orderCreate
     const cart = useSelector(state => state.cart)
 
     const dispatch = useDispatch()
@@ -28,7 +29,7 @@ const PlaceOrderScreen = ({history}) => {
             history.push(`/order/${order._id}`)
             dispatch({type: ORDER_CREATE_RESET})
         }
-    }, [history,success])
+    }, [history,success, dispatch, order._id])
     
     const placeOrder = (e) => {
         e.preventDefault()
@@ -45,6 +46,7 @@ const PlaceOrderScreen = ({history}) => {
     }
     return (
         <div>
+        {loading && <Loader/>}
             <CheckOutsteps step1 step2 step3 step4 />
             <Row>
                 <Col md={8}>

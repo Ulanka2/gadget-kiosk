@@ -3,7 +3,8 @@ from django.urls import path
 
 from core.views.user_views import (
     MyTokenObtainPairView, getUserProfile,
-    getUsers, registerUser, updateUserProfile
+    getUsers, registerUser, updateUserProfile,
+    deleteUser, getUsersById, updateUser,
 )
 
 urlpatterns = [
@@ -12,4 +13,8 @@ urlpatterns = [
     path('profile/', getUserProfile, name='users-profile'),
     path('profile/update/', updateUserProfile, name='users-profile=update'),
     path('', getUsers, name='users'),
+
+    path('<str:pk>/', getUsersById, name='user'),
+    path('update/<str:pk>/', updateUser, name='user-update'),
+    path('delete/<str:pk>/', deleteUser, name='user-delete'),
 ]

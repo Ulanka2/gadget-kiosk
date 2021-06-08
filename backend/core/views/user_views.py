@@ -35,6 +35,7 @@ def registerUser(request):
         message = {'detail': 'User with this mail already exist'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
+# SINGLE USER PROFILE WITH AUTHENTICATION
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def getUserProfile(request):
@@ -42,7 +43,6 @@ def getUserProfile(request):
     serializers = UserSerializer(user, many=False)
     return Response(serializers.data)
 
-# SINGLE USER PROFILE WITH AUTHENTICATION
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def updateUserProfile(request):
@@ -69,4 +69,37 @@ def updateUserProfile(request):
 def getUsers(request):
     users = User.objects.all()
     serializers = UserSerializer(users, many=True)
+    return Response(serializers.data)
+
+# ADMIN WOULD BE ABLE TO DELETE A SINGLE USER
+@api_view(['DELETE'])
+@permission_classes([IsAdminUser])
+def deleteUser(request,pk):
+    user = User.objects.get(pk=pk)
+    user.delete()
+    return Response('User Deleted')
+
+@api_view(['GET'])
+@permission_classes([IsAdminUser])
+def getUsersById(request,pk):
+    user = User.objects.get(pk=pk)
+    serializers = UserSerializer(user, many=False)
+    return Response(serializers.data)
+
+# ADMIN WOULD BE ABLE TO MODIFY A USERS DATA
+@api_view(['PUT'])
+@permission_classes([IsAdminUser])
+def updateUser(request,pk):
+    user = User.objects.get(pk=pk)
+
+    data = request.data
+
+    user.first_name = data['name']
+    user.email = data['email']
+    user.username = data['email']
+    user.is_staff = data['isAdmin']
+    
+    user.save()
+
+    serializers = UserSerializer(user, many=False)
     return Response(serializers.data)
