@@ -16,6 +16,14 @@ import {
     ORDER_LIST_MY_REQUEST,
     ORDER_LIST_MY_SUCCESS,
     ORDER_LIST_MY_FAIL,
+
+    ORDER_LIST_REQUEST,
+    ORDER_LIST_SUCCESS,
+    ORDER_LIST_FAIL,
+
+    ORDER_DELIVERED_REQUEST,
+    ORDER_DELIVERED_SUCCESS,
+    ORDER_DELIVERED_FAIL,
 } from '../constants/orderConstant'
 
 import { 
@@ -106,7 +114,7 @@ export const getMyListOrderDetails = () => async (dispatch, getState) => {
 
         const token = getState().userLogin.userInfo.token
 
-        const {data} = await axios.get('/api/orders/myorders/', {
+        const {data} = await axios.get('/api/orders/', {
             headers: {
                 'Content-type': 'application/json',
                 Authorization: `Bearer ${token}`
@@ -118,6 +126,56 @@ export const getMyListOrderDetails = () => async (dispatch, getState) => {
     }catch(error) {
         dispatch({
             type: ORDER_LIST_MY_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        })
+    }
+}
+
+export const getListOrder = () => async (dispatch, getState) => {
+    try{
+        dispatch({type: ORDER_LIST_REQUEST})
+
+        const token = getState().userLogin.userInfo.token
+
+        const {data} = await axios.get('/api/orders/', {
+            headers: {
+                'Content-type': 'application/json',
+                Authorization: `Bearer ${token}`
+            }
+        })
+
+        dispatch({type: ORDER_LIST_SUCCESS, payload:data})
+
+    }catch(error) {
+        dispatch({
+            type: ORDER_LIST_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        })
+    }
+}
+
+export const deliveredOrder = (order) => async (dispatch, getState) => {
+    try{
+        dispatch({type: ORDER_DELIVERED_REQUEST})
+
+        const token = getState().userLogin.userInfo.token
+
+        const {data} = await axios.put(`/api/orders/${order._id}/delivered/`, order, {
+            headers: {
+                'Content-type': 'application/json',
+                Authorization: `Bearer ${token}`
+            }
+        })
+
+        dispatch({type: ORDER_DELIVERED_SUCCESS, payload: data})
+
+    }catch(error) {
+        dispatch({
+            type: ORDER_DELIVERED_FAIL,
             payload: error.response && error.response.data.detail
                 ? error.response.data.detail
                 : error.message,

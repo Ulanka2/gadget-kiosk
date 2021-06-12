@@ -4,9 +4,9 @@ import {Spinner} from 'react-bootstrap'
 const Loader = () => {
     return (
         <Spinner 
-            animation="grow" 
+            animation="border" 
             role="status" 
-            variant="dark"
+            variant="secondary"
             style={{
                 height:'100px',
                 width: '100px',
