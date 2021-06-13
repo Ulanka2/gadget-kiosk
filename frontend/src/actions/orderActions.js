@@ -164,7 +164,7 @@ export const deliveredOrder = (order) => async (dispatch, getState) => {
 
         const token = getState().userLogin.userInfo.token
 
-        const {data} = await axios.put(`/api/orders/${order._id}/delivered/`, order, {
+        const {data} = await axios.put(`/api/orders/${order._id}/delivered/`, {}, {
             headers: {
                 'Content-type': 'application/json',
                 Authorization: `Bearer ${token}`

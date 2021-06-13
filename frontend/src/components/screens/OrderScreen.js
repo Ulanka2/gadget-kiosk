@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom'
 
 import Message from '../Message'
 import Loader from '../Loader'
-import { getOrderDetails, payOrder } from '../../actions/orderActions'
-import {ORDER_PAY_RESET} from '../../constants/orderConstant'
+import { getOrderDetails, payOrder, deliveredOrder } from '../../actions/orderActions'
+import {ORDER_PAY_RESET, ORDER_DELIVERED_RESET} from '../../constants/orderConstant'
 
 const OrderScreen = ({match, history}) => {
 
@@ -17,11 +17,14 @@ const OrderScreen = ({match, history}) => {
     const orderDetails = useSelector(state => state.orderDetails)
     const {loading, order, error } = orderDetails
 
-    const userLogin = useSelector(state => state.userLogin)
-    const {userInfo} = userLogin
-
     const orderPay = useSelector(state => state.orderPay)
     const {loading:loadingPay, success:successPay } = orderPay
+
+    const orderDelivered = useSelector(state => state.orderDelivered)
+    const {loading:loadingDelivered, success:successDelivered } = orderDelivered
+
+    const userLogin = useSelector(state => state.userLogin)
+    const {userInfo} = userLogin
 
     if(!loading && !error){
         order.itemsPrice = order.orderItems.reduce((acc, item) => acc + item.price * item.qty, 0).toFixed(2)
@@ -50,13 +53,22 @@ const OrderScreen = ({match, history}) => {
     }
 
     useEffect(() => {
-        if(!order || successPay || order._id !== Number(orderId)){
+        if(!userInfo){
+            history.push('/login')
+        }
+        
+        if(!order || successPay || order._id !== Number(orderId) || successDelivered){
             dispatch({type: ORDER_PAY_RESET})
+            dispatch({type: ORDER_DELIVERED_RESET})
             dispatch(getOrderDetails(orderId))
         }
 
-    }, [dispatch, order, orderId, successPay])
+    }, [dispatch, order, orderId, successPay, successDelivered])
 
+
+    const deliveredHandler = () => {
+        dispatch(deliveredOrder(order))
+    }
     return loading ? (
         <Loader />
     ) : error ? (
@@ -171,21 +183,23 @@ const OrderScreen = ({match, history}) => {
                             {!order.isPaid && (
                                 <ListGroup.Item>
                                     {loadingPay && <Loader/>}
-                                    <PaystackButton {...componentProps} />
-                                    {/* {!sdkReady ? (
-                                        <Loader/>
-                                    ) : (
-                                    <PayPalButton 
-                                        amount={order.totalPrice}
-                                        onSuccess={successPaymentHandler}
-                                    />
-                                    )} */}
-                                    
-                                    
+                                    <PaystackButton {...componentProps} />                 
                                 </ListGroup.Item>
                             )}
 
                         </ListGroup>
+
+                        {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+                            <ListGroup.Item>
+                                <Button
+                                    type='button'
+                                    className='btn btn-block'
+                                    onClick={deliveredHandler}
+                                >
+                                    Mark as deliver
+                                </Button>
+                            </ListGroup.Item>
+                        )}
                     </Card>
                 </Col>
             </Row>
