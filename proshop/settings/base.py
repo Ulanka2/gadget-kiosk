@@ -133,6 +133,8 @@ CORS_ALLOWED_ORIGINS = [
     "https://gadget-kiosk.herokuapp.com"
 ]
 
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
