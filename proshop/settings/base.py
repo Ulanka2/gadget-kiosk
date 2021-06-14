@@ -129,7 +129,8 @@ ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000"
+    "http://localhost:3000",
+    "https://gadget-kiosk.herokuapp.com"
 ]
 
 REST_FRAMEWORK = {
