@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn backend.proshop.wsgi --log-file -
+web: gunicorn proshop.wsgi --log-file -
