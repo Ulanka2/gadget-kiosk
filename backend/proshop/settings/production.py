@@ -1,7 +1,7 @@
 from .base import *
 
 DEBUG = False
-ALLOWED_HOSTS = ['ip-address']
+ALLOWED_HOSTS = ['https://gadget-kiosk.herokuapp.com/', 'gadget-kiosk.herokuapp.com', ]
 
 DATABASES = {
     'default': {

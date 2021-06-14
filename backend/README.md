@@ -1,2 +1,1 @@
-"# Django-BoilerPlate" 
 "# ProShop" 
