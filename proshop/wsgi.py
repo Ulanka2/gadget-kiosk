@@ -14,4 +14,4 @@ from whitenoise import WhiteNoise
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'proshop.settings.production')
 
 application = get_wsgi_application()
-# application = WhiteNoise(application, 'staticfiles/')
+application = WhiteNoise(application, 'staticfiles/')
