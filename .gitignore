@@ -25,3 +25,5 @@ yarn-error.log*
 # django
 /env
 /staticfiles
+
+db.sqlite3
