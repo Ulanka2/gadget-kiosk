@@ -15,4 +15,15 @@ ALLOWED_HOSTS = ['gadget-kiosk.herokuapp.com']
 #     }
 # }
 
+# WHITENOISE CONFIGURATION
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# AMAZON CONFIGURATIONS
+AWS_ACCESS_KEY_ID = 'AKIAZQ7Z4VNLF2QL4OUU'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'gadget-kiosk'
+AWS_QUERYSTRING_AUTH = False
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 django_heroku.settings(locals())

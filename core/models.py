@@ -6,7 +6,7 @@ from django.db.models.deletion import SET_NULL
 class Product(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=50, null=True, blank=True)
-    image = models.ImageField(blank=True, null=True, default='/placeholder.png')
+    image = models.ImageField(upload_to='images',blank=True, null=True, default='/placeholder.png')
     brand = models.CharField(max_length=50, blank=True, null=True)
     category = models.CharField(max_length=50, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
