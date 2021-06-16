@@ -1,7 +1,7 @@
 from .base import *
 import django_heroku
 
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['gadget-kiosk.herokuapp.com']
 
 # DATABASES = {
@@ -24,6 +24,7 @@ AWS_SECRET_ACCESS_KEY = 'BYl+A8PM0EybtVge1QlzAYFStwibf3mAFDYsPLgl'
 AWS_STORAGE_BUCKET_NAME = 'gadget-kiosk'
 AWS_QUERYSTRING_AUTH = False
 AWS_DEFAULT_ACL = 'public-read'
+
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
