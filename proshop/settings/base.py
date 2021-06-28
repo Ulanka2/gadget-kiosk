@@ -2,9 +2,13 @@ from pathlib import Path
 from datetime import timedelta
 import os
 
+import environ
+env = environ.Env()
+environ.Env.read_env()
+
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-SECRET_KEY = 'r_g65vj2(x^7pu5)27lbq2_r$9r4dk0onisfc8-$oj0^$3edpr'
+SECRET_KEY = env('SECRET_KEY')
 
 # Application definition
 INSTALLED_APPS = [
