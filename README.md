@@ -1,2 +1,2 @@
 # Gadget Kiosk Project
-This project is buikt with React and Django / DjangoRestFramework
+This project is built with React and Django / DjangoRestFramework
