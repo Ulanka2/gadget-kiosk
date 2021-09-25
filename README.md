@@ -1,27 +1,22 @@
 <!-- ABOUT THE PROJECT -->
 # Gadget Kiosk
 
-<a href="https://ibb.co/KzQ6Mrs"><img src="https://i.ibb.co/Z1wdnMg/Screenshot-10.png" alt="Screenshot-10" border="0"></a>
+<a href="https://ibb.co/KzQ6Mrs"><img src="https://i.ibb.co/Z1wdnMg/Screenshot-10.png" alt="Gadget Kiosk" border="0"></a>
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+## Description
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+In this project, I implemented functionalities such as User Authentication, Adding items to cart, Product search, Payment integration using Paystack, Admin panel for managing customers, products and orders and deployed app to Heroku server and used Postgresql as database.
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
+## Built With
 
-### Built With
-
-* [Django](https://getbootstrap.com)
-* [DjangoRestFramework](https://getbootstrap.com)
-* [React](https://getbootstrap.com)
-* [Redux](https://getbootstrap.com)
-* [React Bootstrap](https://getbootstrap.com)
+* [Django](https://www.djangoproject.com/)
+* [DjangoRestFramework](https://www.django-rest-framework.org/)
+* [React](https://reactjs.org/)
+* [Redux](https://redux.js.org/)
+* [React Bootstrap](https://react-bootstrap.github.io/)
 
 <!---
-<!-- GETTING STARTED -->
+Gettin started
 ## Getting Started
 
 This is an example of how you may give instructions on setting up your project locally.
