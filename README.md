@@ -1,6 +1,6 @@
 <!-- ABOUT THE PROJECT -->
 # Gadget Kiosk
-
+<h2>Project Link <a href='gadget-kiosk.herokuapp.com/'></a></h2>
 <a href="https://ibb.co/KzQ6Mrs"><img src="https://i.ibb.co/Z1wdnMg/Screenshot-10.png" alt="Gadget Kiosk" border="0"></a>
 
 ## Description
