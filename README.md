@@ -1,7 +1,7 @@
 <!-- ABOUT THE PROJECT -->
 # Gadget Kiosk
 ### [Live Site](gadget-kiosk.herokuapp.com/)
-[Gadget Kiosk](https://i.postimg.cc/3JWx0gRQ/Screenshot-2021-09-25-at-16-00-17-Gadget-Kiosk.png)
+<a href='https://postimg.cc/Mv2ShfV9' target='_blank'><img src='https://i.postimg.cc/3JWx0gRQ/Screenshot-2021-09-25-at-16-00-17-Gadget-Kiosk.png' border='0' alt='Screenshot-2021-09-25-at-16-00-17-Gadget-Kiosk'/></a>
 
 ## Description
 
